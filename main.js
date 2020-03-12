@@ -13,12 +13,6 @@ module.exports.loop = function () {
 
     var inventory_count = 5;
 
-    //spawnControl.run();
-    //console.log(classBro['spawin']);
-
-    console.log('the push worked!')
-
-    //classBro.spawnSmall();
 
     if(Game.time % inventory_count === 0) {
         godInventory.count();

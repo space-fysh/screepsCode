@@ -4,14 +4,15 @@ var roleBuilder = {
     run: function(creep) {
         if (creep.room.find(FIND_CONSTRUCTION_SITES)){
         //creep.memory['doing'] = 'Nothing'
+        console.log('there is something to construct')
 
-	    if(creep.memory.building && creep.store[RESOURCE_ENERGY] == 0) {
+	    if(creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
             creep.memory.working = false;
             creep.say('🔄 harvest');
             creep.memory['doing'] = 'Going to source'
 	    }
-	    
-	    if(!creep.memory.building && creep.store.getFreeCapacity() == 0) {
+
+	    if(!creep.memory.working && creep.store.getFreeCapacity() == 0) {
 	        creep.memory.working = true;
 	        creep.say('🚧 build');
 	        creep.memory['doing'] = 'Building'
@@ -19,7 +20,7 @@ var roleBuilder = {
 
 	    if(creep.memory.working) {
           var targets = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES);
-	        
+
             if(targets) {
                 if(creep.build(targets) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(targets, {visualizePathStyle: {stroke: '#ff0000', lineStyle: 'dashed'}});
@@ -38,7 +39,7 @@ var roleBuilder = {
                         return (structure.structureType == STRUCTURE_CONTAINER &&
                             structure.store[RESOURCE_ENERGY] >= creep.store.getCapacity());
                     }
-                });                
+                });
 	        // harvest if no containers with energy
 	        if (containers){
 	            if(creep.withdraw(containers, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
