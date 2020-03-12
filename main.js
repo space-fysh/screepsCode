@@ -16,7 +16,7 @@ module.exports.loop = function () {
     //spawnControl.run();
     //console.log(classBro['spawin']);
 
-
+    console.log('github push worked!')
 
     //classBro.spawnSmall();
 
