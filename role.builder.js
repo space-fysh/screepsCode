@@ -2,9 +2,6 @@ var roleBuilder = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-        if (creep.room.find(FIND_CONSTRUCTION_SITES)){
-        //creep.memory['doing'] = 'Nothing'
-        console.log('there is something to construct')
 
 	    if(creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
             creep.memory.working = false;
@@ -53,7 +50,6 @@ var roleBuilder = {
                 }
 	        }
 	    }
-    }
     else {
       //change role
       console.log('nothing to build. changing to general')
