@@ -50,11 +50,6 @@ var roleBuilder = {
                 }
 	        }
 	    }
-    else {
-      //change role
-      console.log('nothing to build. changing to general')
-      creep.memory.role = 'general'
-    }
 	}
 };
 
