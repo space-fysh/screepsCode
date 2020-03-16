@@ -1,5 +1,5 @@
-	    
-	    
+
+
 var roleRepairer = {
 
     /** @param {Creep} creep **/
@@ -11,15 +11,15 @@ var roleRepairer = {
             creep.say('🔄 harvest');
             creep.memory['doing'] = 'Going to source'
 	    }
-	    
-	    
+
+
 	    if(!creep.memory.working && creep.store.getFreeCapacity() == 0) {
 	        creep.memory.working = true;
 	        creep.say('⚡ repairing');
 	        creep.memory['doing'] = 'repairing'
 	    }
 
-        
+
         // if creep is supposed to repair something
         if (creep.memory.working == true) {
             // find closest structure with less than max hits
@@ -30,7 +30,9 @@ var roleRepairer = {
                 // a property called filter which can be a function
                 // we use the arrow operator to define it
                 // for now, only repair up to 7000, otherwise would repain walls and ramparts forever
-                filter: (s) => s.hits < s.hitsMax  && s.hits < 7000 // && s.structureType != STRUCTURE_WALL
+                filter: (s) => (s.hits < s.hitsMax)  &&
+								!(s.structureType == STRUCTURE_WALL || s.structureType == STRUCTURE_RAMPART) ||
+								((s.hits < 15000) && (s.structureType == STRUCTURE_WALL || s.structureType == STRUCTURE_RAMPART))
             });
 
             // if we find one
@@ -43,16 +45,16 @@ var roleRepairer = {
             }
             // if we can't fine one
             else {
-                
+
                 var targets = creep.room.find(FIND_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_TOWER) && // || structure.structureType == STRUCTURE_CONTAINER  //|| structure.structureType == STRUCTURE_SPAWN
                             structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
                     }
             });
-                
+
             if(targets) {
-                
+
                 if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#0000ff', lineStyle: 'dashed'}});
                     creep.memory['doing'] = 'Going to' + targets
@@ -63,8 +65,8 @@ var roleRepairer = {
                     creep.memory['role'] = 'general'
                 }
             }
-                
-                
+
+
                 // change class if nothing to repair
                 console.log('nothing to repair. changing to general')
                 creep.memory['role'] = 'general'
@@ -73,14 +75,14 @@ var roleRepairer = {
         // if creep is supposed to harvest energy from source
         else {
 	            //Check containers first, then harvest if empty. Maybe only go to container if it has enough resources
-	        
+
 	        var containers = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_CONTAINER &&
                             structure.store[RESOURCE_ENERGY] >= creep.store.getCapacity());
                     }
                 });
-                
+
                 //console.log('builder moving to container: ' + containers)
 	        // harvest if no containers with energy
 	        if (containers){
