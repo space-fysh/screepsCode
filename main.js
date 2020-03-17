@@ -7,6 +7,7 @@ var godInventory = require('god.inventory');
 var classBro = require('class.bro');
 var towerDefense = require('tower.defense');
 var godJobs = require('god.jobs');
+var godSpawn = require('god.spawn');
 
 
 module.exports.loop = function () {
@@ -16,8 +17,9 @@ module.exports.loop = function () {
 
     if(Game.time % inventory_count === 0) {
         godInventory.count();
-        classBro.spawnin('')
+        classBro.spawnin('');
 
+        godSpawn.spawnMiners();
     }
 
     towerDefense.defendRoom;

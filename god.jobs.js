@@ -37,14 +37,14 @@ var godJobs = {
         filter: (s) => s.hits < (s.hitsMax * .8)  && s.hits < 7000
     })).length;
 
-    if(creep.memory.role === 'general' || creep.memory.role === '' || !creep.memory.role){
+    if(creep.memory.role === 'general' || creep.memory.role === '' || !creep.memory.role || creep.memory.role == undefined){
       // make repairer if there is at least one repair site. assign 2 repairers
       if((repairSites > 0) && (numRepairers < minRepairers)){creep.memory.role = 'repairer'}
       // make builder if there is at least one construction site. assign 2 builders
       else if((constructionSites > 0) && (numBuilders < minBuilders)){creep.memory.role = 'builder'}
       // always want at least 2 harvesters
       else if (numHarvesters < minHarvesters){creep.memory.role = 'harvester'}
-      
+
       else {creep.memory.role = 'upgrader'}
 
     }
