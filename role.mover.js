@@ -63,7 +63,7 @@ var roleMover = {
         // check outerContainers if they have energy and go to the container if they do
         for (container in Memory.outerContainers){
           //check if container has enough energy
-          if container.store[RESOURCE_ENERGY] >= creep.store.getCapacity(){
+          if(container.store[RESOURCE_ENERGY] >= creep.store.getCapacity()){
             moveEnergy = true
             //withdraw or move to container
             if(creep.withdraw(containers, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
