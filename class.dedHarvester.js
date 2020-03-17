@@ -7,7 +7,7 @@ var dedHarvester = {
         var newName = 'Harvester' + Game.time;
             console.log('Spawning dedicated harvester: ' + newName);
             if (!Game.spawns['spo'].spawnCreep([WORK,WORK,WORK,WORK,WORK,WORK,MOVE], newName,
-                {memory: {role: 'dedHarvester', class: 'dedHarvester', working: false, sourceId: (Memory.sourceId.pop()).id, atSource: false}}))
+                {memory: {role: 'dedHarvester', class: 'dedHarvester', working: false, sourceId: (Memory.sourceLocations.pop()).id, atSource: false}}))
                 {
                   //i dunno
               }
@@ -19,6 +19,10 @@ var dedHarvester = {
     getSources: function(thisroom){
       //build a list of all sources in the room
       Memory.sourceLocations = Game.rooms[thisroom].find(FIND_SOURCES)
+
+    },
+
+    kill: function(creep){
 
     },
 
