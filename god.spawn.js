@@ -5,7 +5,7 @@ var movers = require('role.mover')
 var godSpawn = {
   spawnMiners: function() {
     for(spawn in Game.spawns){
-
+      console.log('spawning miners for Spawn: ' + spawn)
       // var harvesters = (_.filter(Game.creeps, (creep) => creep.memory.role == 'harvester')).length;
       // var upgraders = (_.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader')).length;
       // var builders = (_.filter(Game.creeps, (creep) => creep.memory.role == 'builder')).length;
@@ -14,6 +14,8 @@ var godSpawn = {
       var movers = (_.filter(Game.creeps, (creep) => creep.memory.role == 'miner')).length;
       var energyAvaliable = spawn.room.energyCapacityAvailable
       //var noJobs = _.filter(Game.creeps, (creep) => creep.memory.role == '' || creep.memory.role == 'general');
+
+
 
       //check number of miners in room, produce one for each source
       if (miners < 2){
