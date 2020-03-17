@@ -5,9 +5,12 @@ var roleMover = {
         console.log('Spawning mover: ' + newName);
         if (!Game.spawns['spo'].spawnCreep([WORK,WORK,WORK,WORK,WORK,WORK,MOVE], newName,
             {memory: {role: 'mover', class: 'mover', working: false}}))
-    else {
-        console.log('Too low energy to spawn mover')
-    }
+            {
+              // dunno
+            }
+        else {
+            console.log('Too low energy to spawn mover')
+        }
   },
 
   run: function(creep){
