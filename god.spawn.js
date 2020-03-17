@@ -4,7 +4,7 @@ var movers = require('role.mover')
 
 var godSpawn = {
   spawnMiners: function() {
-    for(spawn in Game.spawns.){
+    for(spawn in Game.spawns){
 
       // var harvesters = (_.filter(Game.creeps, (creep) => creep.memory.role == 'harvester')).length;
       // var upgraders = (_.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader')).length;
