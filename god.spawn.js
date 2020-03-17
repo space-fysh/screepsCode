@@ -12,17 +12,17 @@ var godSpawn = {
       // var repairers = (_.filter(Game.creeps, (creep) => creep.memory.role == 'repairer')).length;
       var miners = (_.filter(Game.creeps, (creep) => creep.memory.role == 'miner')).length;
       var movers = (_.filter(Game.creeps, (creep) => creep.memory.role == 'miner')).length;
-      var energyAvaliable = spawn.room.energyCapacityAvailable
+      var energyAvaliable = Game.rooms[spawn.room].energyAvailable
       //var noJobs = _.filter(Game.creeps, (creep) => creep.memory.role == '' || creep.memory.role == 'general');
 
 
 
       //check number of miners in room, produce one for each source
       if (miners < 2){
-        dedHarvester.spawn(spawn.room);
+        dedHarvester.spawn(Game.rooms[spawn.room]);
       }
       if (movers < 3){
-        movers.spawn(spawn.room);
+        movers.spawn(Game.rooms[spawn.room]);
       }
     }
   }
