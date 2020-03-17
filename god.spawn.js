@@ -22,10 +22,10 @@ var godSpawn = {
 
       //check number of miners in room, produce one for each source
       if (miners < 2){
-        dedHarvester.spawn(room);
+        dedHarvester.spawnin(room);
       }
       if (movers < 3){
-        movers.spawn(room);
+        movers.spawnin(room);
       }
     }
   }
