@@ -8,6 +8,9 @@ var dedHarvester = {
             console.log('Spawning dedicated harvester: ' + newName);
             if (!Game.spawns['spo'].spawnCreep([WORK,WORK,WORK,WORK,WORK,WORK,MOVE], newName,
                 {memory: {role: 'dedHarvester', class: 'dedHarvester', working: false, sourceId: (Memory.sourceId.pop()).id, atSource: false}}))
+                {
+                  //i dunno
+              }
         else {
             console.log('Too low energy to spawn a dedicated harvester')
         }
