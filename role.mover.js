@@ -134,6 +134,7 @@ var roleMover = {
         }
       }
     }
-};
+  }
+}
 
 module.exports = roleMover;
